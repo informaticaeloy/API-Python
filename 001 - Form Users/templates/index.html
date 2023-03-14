@@ -45,6 +45,8 @@
                                 <input type="text" class="form-control text-lowercase" id="password" required="" name="password" value="">
 		    	            </div>
                             <div class="form-group required">
+                                
+                                <!--
                                 <script type="text/javascript">
                                     $.getJSON("http://jsonip.com",
                                     function (data)
@@ -53,11 +55,16 @@
                                     });
                                 </script>
                                 <lSabel for="getipaddress">La IP de origen quedar&aacute registrada:</lSabel>
-                                <b><span class=ipaddress id="ipaddress"></b>
+                                <b><span class=ipaddress id="ipaddress" name="ipaddress"></b>
+                                <input type="text" class="form-control text-lowercase" id="ipaddress" hidden name="ipaddress" value="">
+                                -->
+                                <lSabel for="getipaddress">La IP de origen quedar&aacute registrada:</lSabel>
+                                <b><span class=ipaddress id="ipaddress" name="public_ip" value="{{ public_ip }}">{{ public_ip }}</b>
+                                <input type="text" class="form-control text-lowercase" id="public_ip" hidden name="public_ip" value="{{ public_ip }}">
                             </div>
                             
                             <div class="form-group pt-1">
-                                <button class="btn btn-primary btn-block" type="submit">Enviar</button>
+                                <button class="btn btn-primary btn-block" type="submit" value="Submit">Enviar</button>
                             </div>
                         </form>
                     </div>
