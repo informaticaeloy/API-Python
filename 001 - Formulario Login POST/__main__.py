@@ -1,6 +1,5 @@
 from uvicorn import Config, Server
 
-
 server = Server(
     Config(
         "main:app",
@@ -10,7 +9,5 @@ server = Server(
         log_level='debug' # Options: 'critical', 'error', 'warning', 'info', 'debug', 'trace'
     ),
  )
-    
-
 
 server.run()
