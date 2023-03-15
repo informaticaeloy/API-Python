@@ -134,7 +134,7 @@ python -m uvicorn  main:app --reload
 
 #### Llamada al server (alternativa)
 
-Podemos lanzar nuestro servidor con el comando anterior desde la terminal, o podemos crear un fichero que haga esa llamada. He creado una prueba en el fichero \_ \_  main \_ \_ .py , que podemos ejecutar aparte.
+Podemos lanzar nuestro servidor con el comando anterior desde la terminal, o podemos crear un fichero que haga esa llamada. He creado una prueba en el fichero \_\_main\_\_.py , que podemos ejecutar aparte.
 
 ```python
 # Importamos las librerías necesarias
