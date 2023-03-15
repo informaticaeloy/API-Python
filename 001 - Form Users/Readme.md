@@ -4,6 +4,8 @@
 
 ### Explicación:
 
+#### Código de main.py
+
 ```python
 from fastapi import FastAPI, Form, Request, Depends
 from fastapi.responses import HTMLResponse
@@ -46,3 +48,96 @@ async def login(username: str = Form(...), password: str = Form(...), public_ip:
     datos_login = {"username" : username, "password" : password, "public_ip" : public_ip}
     return datos_login
 ```
+
+#### Y este es el código de index.html
+
+```html
+<!DOCTYPE html>
+<html lang='es' >
+<head>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+    <!--
+        á -> &aacute;
+        é -> &eacute;
+        í -> &iacute;
+        ó -> &oacute;
+        ú -> &uacute;
+        ñ -> &ntilde;
+    -->
+
+    <title>Password Reset</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
+          rel="stylesheet" 
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Muli'>
+    <link rel="stylesheet" href="./statics_css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+</head>
+
+<body>
+    <div class="pt-5">
+        <h1 class="text-center">Password reset</h1>
+  
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 mx-auto">
+                    <div class="card card-body">
+                                                    
+                        <form id="submitForm" action="/login" method="POST" enctype="multipart/form-data">
+                            <div class="imgcontainer">
+                                <img src="./statics_img/img_avatar.png" alt="Avatar" class="avatar">
+                            </div>    
+			                <div class="form-group required">
+                                <lSabel >Username / Email</lSabel>
+                                <input type="text" class="form-control text-lowercase" id="username" required="" name="username" value="">
+                            </div>                    
+                                
+			                <div class="form-group required">
+    			                <lSabel >Password</lSabel>
+                                <input type="text" class="form-control text-lowercase" id="password" required="" name="password" value="">
+		    	            </div>
+                            <div class="form-group required">
+                                
+                                <!--
+                                <script type="text/javascript">
+                                    $.getJSON("http://jsonip.com",
+                                    function (data)
+                                    {   console.log(data.ip);
+                                        $(".ipaddress").text(data.ip);
+                                    });
+                                </script>
+                                <lSabel for="getipaddress">La IP de origen quedar&aacute registrada:</lSabel>
+                                <b><span class=ipaddress id="ipaddress" name="ipaddress"></b>
+                                <input type="text" class="form-control text-lowercase" id="ipaddress" hidden name="ipaddress" value="">
+                                -->
+                                <lSabel for="getipaddress">La IP de origen quedar&aacute registrada:</lSabel>
+                                <b><span class=ipaddress id="ipaddress" name="public_ip" value="{{ public_ip }}">{{ public_ip }}</b>
+                                <input type="text" class="form-control text-lowercase" id="public_ip" hidden name="public_ip" value="{{ public_ip }}">
+                            </div>
+                            
+                            <div class="form-group pt-1">
+                                <button class="btn btn-primary btn-block" type="submit" value="Submit">Enviar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+```
+
+#### Estructura de directorios
+
+001 - Form Login
+|- templates
+|     |- statics     
+|     |     |- css
+|     |     |     |- style.css
+|     |     |- images
+|     |           |- img-avatar.png
+|     |- index.html
+|- main.py
