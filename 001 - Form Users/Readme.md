@@ -120,25 +120,7 @@ async def login(username: str = Form(...), password: str = Form(...), public_ip:
 
 #### Estructura de directorios
 
-001 - Form Login
-
-|- templates
-
-|     |- statics     
-
-|     |     |- css
-
-|     |     |     |- style.css
-
-|     |     |- images
-
-|     |           |- img-avatar.png
-
-|     |- index.html
-
-|- main.py
-
-|- __main__.py
+![image](https://user-images.githubusercontent.com/20743678/225244172-bd8d6201-043c-44ec-9ac4-f07c28baaa4a.png)
 
 #### Llamada al server
 
@@ -146,9 +128,28 @@ La llamada al server se hace de la siguiente forma, en una terminal en mi caso d
 
 Con la opción --reload, nos reiniciará el server cada vez que modifiquemos un fichero de código sin tener que pararlo y arrancarlo de nuevo
 
-```py
+```python
 python -m uvicorn  main:app --reload
 ```
 
 #### Llamada al server (alternativa)
 
+Podemos lanzar nuestro servidor con el comando anterior desde la terminal, o podemos crear un fichero que haga esa llamada. He creado una prueba en el fichero __main__.py , que podemos ejecutar aparte.
+
+```python
+# Importamos las librerías necesarias
+from uvicorn import Config, Server
+
+# Definimos la configuración del server
+server = Server(
+    Config(
+        "main:app",       # Nombre del fichero y nombre de la aplicación a lanzar, del tipo fichero:applicación
+        host="127.0.0.1", # Url desde donde nuestro server será accesible. 127.0.0.1 sólo para nuestra máquina, 0.0.0.0 para cualquier equipo de la red
+        port=9002,        # Puerto de escucha de nuestro server. Si no se especifica, por defecto es el 8000
+        reload=True,      # La opción de reload es para que se reinicia cada vez que un fichero es modificado
+        log_level='debug' # Options: 'critical', 'error', 'warning', 'info', 'debug', 'trace'
+    ),
+ )
+server.run()
+
+```
