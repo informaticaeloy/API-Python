@@ -10,6 +10,6 @@
 ### Siguiendo el material de Brais Moure (MoureDev) -> https://github.com/mouredev , he creado mi propia API que iré modificando para multitud de proyectos diversos. 
 
 * [001 - Formulario Login POST](https://github.com/informaticaeloy/API-Python/tree/main/001%20-%20Formulario%20Login%20POST)
-* [002 - Trabajando con PyMongoDB (https://github.com/informaticaeloy/API-Python/tree/main/002%20-%20PyMongo)
+* [002 - Trabajando con PyMongoDB](https://github.com/informaticaeloy/API-Python/tree/main/002%20-%20PyMongo)
 
 *** En desarrollo ***
