@@ -89,29 +89,17 @@ async def login(username: str = Form(...), password: str = Form(...), public_ip:
                             <div class="imgcontainer">
                                 <img src="./statics_img/img_avatar.png" alt="Avatar" class="avatar">
                             </div>    
-			                <div class="form-group required">
+			    <div class="form-group required">
                                 <lSabel >Username / Email</lSabel>
                                 <input type="text" class="form-control text-lowercase" id="username" required="" name="username" value="">
                             </div>                    
                                 
-			                <div class="form-group required">
-    			                <lSabel >Password</lSabel>
-                                <input type="text" class="form-control text-lowercase" id="password" required="" name="password" value="">
-		    	            </div>
                             <div class="form-group required">
-                                
-                                <!--
-                                <script type="text/javascript">
-                                    $.getJSON("http://jsonip.com",
-                                    function (data)
-                                    {   console.log(data.ip);
-                                        $(".ipaddress").text(data.ip);
-                                    });
-                                </script>
-                                <lSabel for="getipaddress">La IP de origen quedar&aacute registrada:</lSabel>
-                                <b><span class=ipaddress id="ipaddress" name="ipaddress"></b>
-                                <input type="text" class="form-control text-lowercase" id="ipaddress" hidden name="ipaddress" value="">
-                                -->
+    			        <lSabel >Password</lSabel>
+                                <input type="text" class="form-control text-lowercase" id="password" required="" name="password" value="">
+		    	    </div>
+				
+                            <div class="form-group required">
                                 <lSabel for="getipaddress">La IP de origen quedar&aacute registrada:</lSabel>
                                 <b><span class=ipaddress id="ipaddress" name="public_ip" value="{{ public_ip }}">{{ public_ip }}</b>
                                 <input type="text" class="form-control text-lowercase" id="public_ip" hidden name="public_ip" value="{{ public_ip }}">
@@ -133,11 +121,34 @@ async def login(username: str = Form(...), password: str = Form(...), public_ip:
 #### Estructura de directorios
 
 001 - Form Login
+
 |- templates
+
 |     |- statics     
+
 |     |     |- css
+
 |     |     |     |- style.css
+
 |     |     |- images
+
 |     |           |- img-avatar.png
+
 |     |- index.html
+
 |- main.py
+
+|- __main__.py
+
+#### Llamada al server
+
+La llamada al server se hace de la siguiente forma, en una terminal en mi caso dentro de VS Code. main se refiere al fichero .py a llamar y app el nombre declarado de la aplicación de FastAPI dentro del .py
+
+Con la opción --reload, nos reiniciará el server cada vez que modifiquemos un fichero de código sin tener que pararlo y arrancarlo de nuevo
+
+```py
+python -m uvicorn  main:app --reload
+```
+
+#### Llamada al server (alternativa)
+
