@@ -1,0 +1,74 @@
+
+<!--<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    </head>
+
+<body>
+    <div class="results">
+        <table class="table table-striped">
+            {% for recipe in recipes %}
+            
+                {{ recipe.st }}
+            
+            {% endfor %}
+        </table>
+    </div>
+
+</body>
+</html>
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="{{ url_for('static', path='/style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.usebootstrap.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="header-title pb-3 mt-0">Payments</h5>
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead>
+                                    <tr class="align-self-center">
+                                        <th>Project Name</th>
+                                        <th>Client Name</th>
+                                        <th>Payment Type</th>
+                                        <th>Paid Date</th>
+                                        <th>Amount</th>
+                                        <th>Transaction</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for recipe in recipes %}
+            
+                                    
+                                
+                                
+                                    <tr>
+                                        <td>{{ recipe.id }}</td>
+                                        <td><img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="" class="thumb-sm rounded-circle mr-2"> Frank M. Lyons</td>
+                                        <td>{{ recipe.st }}</td>
+                                        <td>15/7/2018</td>
+                                        <td>$35,000</td>
+                                        <td><span class="badge badge-boxed badge-soft-primary">Success</span></td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        <!--end table-responsive-->
+                        <div class="pt-3 border-top text-right"><a href="#" class="text-primary">View all <i class="mdi mdi-arrow-right"></i></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+    
+  
