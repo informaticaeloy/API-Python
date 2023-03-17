@@ -1,0 +1,65 @@
+body{
+    background: #f4f6f9;
+    margin-top:20px;
+}
+.activity-box .date-devider {
+    border-top: 2px solid rgba(120, 130, 140, 0.13);
+    position: relative;
+}
+.activity-box .date-devider span {
+    background: #e9edf2;
+    padding: 5px 15px;
+    border-radius: 60px;
+    font-size: 14px;
+    top: -15px;
+    position: relative;
+    margin-left: 20px;
+}
+
+.activity-box .activity-item {
+    display: flex;
+    margin-bottom: 30px;
+}
+.activity-box .activity-item .image-list > a {
+    margin-left: -15px;
+    position: relative;
+    vertical-align: middle;
+}
+.activity-box .activity-item .image-list > a:first-child,
+.activity-box .activity-item .image-list > a:last-child {
+    margin-left: 0px;
+}
+.activity-box .activity-item .image-list > a:hover {
+    z-index: 10;
+}
+.activity-box .activity-item .image-list > a:hover img {
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+}
+.round img {
+    border-radius: 100%;
+}
+.card-no-border .card {
+    border: 0px;
+    border-radius: 0px;
+    box-shadow: none;
+}
+.m-r-20 {
+    margin-right: 20px;
+}
+.img-circle {
+    border-radius: 100%;
+}
+.round.round-warning {
+    background: #ffb22b;
+}
+.round {
+    line-height: 48px;
+    color: #ffffff;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    border-radius: 100%;
+    background: #398bf7;
+}
