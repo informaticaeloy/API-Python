@@ -33,6 +33,9 @@ def list_books(request: Request):
         #json.dumps(lista_de_books)
     print(type(lista_de_books))
 
+mongodb_client = MongoClient(config["ATLAS_URI"])
+database = mongodb_client[config["DB_NAME"]]
+collection = database[config["COLLECTION"]]
     
     print(type(lista_de_books))
     return TEMPLATES.TemplateResponse("index.html",{"request": request, "recipes": lista_de_books})
