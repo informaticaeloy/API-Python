@@ -120,7 +120,7 @@ async def login(username: str = Form(...), password: str = Form(...), public_ip:
 
 #### Estructura de directorios
 
-![image](https://user-images.githubusercontent.com/20743678/225244172-bd8d6201-043c-44ec-9ac4-f07c28baaa4a.png)
+<kbd>![image](https://user-images.githubusercontent.com/20743678/225244172-bd8d6201-043c-44ec-9ac4-f07c28baaa4a.png)</kbd>
 
 #### Llamada al server
 
@@ -155,4 +155,4 @@ server.run()
 ```
 
 #### Aspecto final
-![image](https://user-images.githubusercontent.com/20743678/225308479-4a918499-5b9b-47f2-adbc-c3b1c5d52d5d.png)
+<kbd>![image](https://user-images.githubusercontent.com/20743678/225308479-4a918499-5b9b-47f2-adbc-c3b1c5d52d5d.png)</kbd>
