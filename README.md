@@ -16,7 +16,7 @@ Repositorio con code, aclaraciones y ejemplos de los proyectos Python que voy de
 * [001 - Formulario Login POST](https://github.com/informaticaeloy/API-Python/tree/main/001%20-%20Formulario%20Login%20POST)
 * [002 - Trabajando con PyMongoDB](https://github.com/informaticaeloy/API-Python/tree/main/002%20-%20PyMongo)
 * [003 - FastAPI - Visualización con platillas HTML.](https://github.com/informaticaeloy/API-Python/tree/main/003%20-%20FastAPI%20-%20Visualizaci%C3%B3n%20con%20platillas%20HTML)
-* [004 - PyMongo + FastAPI] ***En desarrollo***(https://github.com/informaticaeloy/API-Python/tree/main/004%20-%20PyMongo%20+%20FastAPI)
+* [004 - PyMongo + FastAPI](https://github.com/informaticaeloy/API-Python/tree/main/004%20-%20PyMongo%20+%20FastAPI) ***En desarrollo***
 
 ### Referencias
 
