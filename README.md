@@ -16,9 +16,16 @@ Repositorio con code, aclaraciones y ejemplos de los proyectos Python que voy de
 * [001 - Formulario Login POST](https://github.com/informaticaeloy/API-Python/tree/main/001%20-%20Formulario%20Login%20POST)
 * [002 - Trabajando con PyMongoDB](https://github.com/informaticaeloy/API-Python/tree/main/002%20-%20PyMongo)
 * [003 - FastAPI - Visualización con platillas HTML.](https://github.com/informaticaeloy/API-Python/tree/main/003%20-%20FastAPI%20-%20Visualizaci%C3%B3n%20con%20platillas%20HTML)
-* [004 - PyMongo + FastAPI]***En desarrollo***
+* [004 - PyMongo + FastAPI] ***En desarrollo*** (https://github.com/informaticaeloy/API-Python/tree/main/004%20-%20PyMongo%20+%20FastAPI)
 
 ### Referencias
 
-## Brais Moure (@MoureDev) -> https://github.com/mouredev 
+## Brais Moure (@MoureDev) -> (https://github.com/mouredev)
 
+* Plantillas prediseñadas de bootstrap-snippets -> (https://bootdey.com/bootstrap-snippets)
+* Sitio oficial de MongoDB -> (https://www.mongodb.com/)
+* Sitio oficial de FastAPI -> (https://fastapi.tiangolo.com/)
+* Sitio oficial de Python -> (https://www.python.org/downloads/)
+* Sitio oficial de VS Code -> (https://code.visualstudio.com/)
+* Sitio oficial de PyCharm -> (https://www.jetbrains.com/es-es/pycharm/)
+* Sitio oficial de Deta.Space -> (https://deta.space/)
