@@ -30,7 +30,7 @@ def list_books(request: Request):
     return TEMPLATES.TemplateResponse("index.html",{"request": request, "recipes": lista_de_books})
  ```
  
- Está última variable, "lista_de_books", es utilizada dentro de index.html con la construcción
+ Está última variable, "lista_de_books", es utilizada dentro de index.html con la construcción:
  
  ```sell
  {% for recipe in recipes %}
