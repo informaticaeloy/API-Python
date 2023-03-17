@@ -6,15 +6,15 @@ La idea de este desarrollo es crear un fichero HTML dinámico con tablas de dato
 
 * El fichero .env contiene los datos de acceso a tu clúster de Mongo DB Atlas
 
-![image](https://user-images.githubusercontent.com/20743678/225888717-5fd66b79-d81c-4b22-be30-73bdb0ab007c.png)
+<kbd>![image](https://user-images.githubusercontent.com/20743678/225888717-5fd66b79-d81c-4b22-be30-73bdb0ab007c.png)</kbd>
 
 * En la carpeta "templates" están los ficheros "indexXX.html", que son los que lee la API y los devuelve modificados como respuesta. Todos estos fichero funcionan con la API, y todos son distintos diseños HTML con Bootstrap y FontAwesome. Simplemente renombra la plantilla que te interese a "index.html" y el fichero "/static/styleXX.css" a "style.css". El fichero index03.html necesita del fichero /static/style03.css, el index05.html necesita del fichero /static/style05.css, etc.
 
 Renombra pues la plantilla y el css deseados a "index.html" y "style.css" y la API ya hará uso de ellas, o modifica en el código del fichero main.py la llamada a estos ficheros con el nombre deseado.
 
-![image](https://user-images.githubusercontent.com/20743678/225890639-802f87c2-3f90-4cef-b354-f1d2c9fbb5f5.png)
+<kbd>![image](https://user-images.githubusercontent.com/20743678/225890639-802f87c2-3f90-4cef-b354-f1d2c9fbb5f5.png)</kbd>
 
-![image](https://user-images.githubusercontent.com/20743678/225890903-62ca4fe9-f647-41f3-9faa-ff6987413f64.png)
+<kbd>![image](https://user-images.githubusercontent.com/20743678/225890903-62ca4fe9-f647-41f3-9faa-ff6987413f64.png)</kbd>
 
 La función list_books de main.py, llama a TEMPLATES.TemplateResponse pasándole como argumento "index.html", la variable "request" y los datos almacenados en la lista "lista_de_books". 
 
@@ -95,4 +95,6 @@ Un ejemplo más sencillo sería este:
 </table>
 ```
 
-![image](https://user-images.githubusercontent.com/20743678/225895235-f07503fb-6e29-40ea-8f3e-c85e83753ddb.png)
+Y visto en el navegador tendría este aspecto:
+
+<kbd>![image](https://user-images.githubusercontent.com/20743678/225895235-f07503fb-6e29-40ea-8f3e-c85e83753ddb.png)</kbd>
