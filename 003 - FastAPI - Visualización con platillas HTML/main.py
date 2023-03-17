@@ -23,11 +23,6 @@ class Recipe(BaseModel):
 TEMPLATES = Jinja2Templates(directory=str("templates"))
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
-#DB_conn = pymongo.MongoClient("mongodb+srv://usuario:password@cluster0.tu_ruta_a_tu_cluster.mongodb.net/?retryWrites=true&w=majority")
-#nueva_DB = DB_conn["nombre_nueva_BD"]
-#nueva_coleccion = nueva_DB["prueba_nueva_coleccion"]
-
-#@app.get("/")
 @app.get("/", response_description="List all books", response_model=List[Book])
 def list_books(request: Request):
     books = collection.find(limit=10)
@@ -41,21 +36,6 @@ def list_books(request: Request):
     
     print(type(lista_de_books))
     return TEMPLATES.TemplateResponse("index.html",{"request": request, "recipes": lista_de_books})
-'''
-    output = json2html.convert(json = {"sample":[{"id":"1234"},{"nombre":"12346976546"}]}) #, table_attributes="class=\"table table-bordered table-hover\"")
-    print(type(lista_de_books))
-    return output
-'''
-
-'''
-@app.on_event("startup")
-def startup_db_client():
-    mongodb_client = MongoClient(config["ATLAS_URI"])
-    database = mongodb_client[config["DB_NAME"]]
-    collection = database[config["COLLECTION"]]
-    print(collection)
-    print("Connected to the MongoDB database!")
-'''
 
 @app.on_event("shutdown")
 def shutdown_db_client():
