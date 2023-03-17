@@ -34,7 +34,7 @@ def list_books(request: Request):
  
  ```sell
  {% for recipe in recipes %}
-      {{ recipe.st }}
+      {{ recipe.id }}
       {{ recipe.st }}
  {% endfor %}
  ```
@@ -42,33 +42,57 @@ def list_books(request: Request):
  De esta forma dentro de index.html:
  
  ```html
-         {% for recipe in recipes %}
+{% for recipe in recipes %}
 
-        <div class="card mb-3">
-          <div class="card-body">
-            <div class="d-flex flex-column flex-lg-row">
-              <span class="avatar avatar-text rounded-3 me-4 bg-info mb-2">{{ recipe.id }}</span>
-              <div class="row flex-fill">
-                <div class="col-sm-5">
-                  <h4 class="h5">{{ recipe.st }}</h4>
-                  <span class="badge bg-secondary">WORLDWIDE</span> <span class="badge bg-success">$150K - $210K</span>
-                </div>
-                <div class="col-sm-4 py-2">
-                  <span class="badge bg-secondary">PRODUCT MARKETING</span>
-                  <span class="badge bg-secondary">MARKETING</span>
-                  <span class="badge bg-secondary">EXECUTIVE</span>
-                  <span class="badge bg-secondary">ECOMMERCE</span>
-                </div>
-                <div class="col-sm-3 text-lg-end">
-                  <a href="#" class="btn btn-primary stretched-link">Apply</a>
-                </div>
-              </div>
-            </div>
-          </div>
+    <div class="card mb-3">
+     <div class="card-body">
+      <div class="d-flex flex-column flex-lg-row">
+       <span class="avatar avatar-text rounded-3 me-4 bg-info mb-2">{{ recipe.id }}</span>
+        <div class="row flex-fill">
+         <div class="col-sm-5">
+          <h4 class="h5">{{ recipe.st }}</h4>
+          <span class="badge bg-secondary">WORLDWIDE</span> <span class="badge bg-success">$150K - $210K</span>
+         </div>
+        <div class="col-sm-4 py-2">
+        <span class="badge bg-secondary">PRODUCT MARKETING</span>
+        <span class="badge bg-secondary">MARKETING</span>
+        <span class="badge bg-secondary">EXECUTIVE</span>
+        <span class="badge bg-secondary">ECOMMERCE</span>
+       </div>
+      <div class="col-sm-3 text-lg-end">
+       <a href="#" class="btn btn-primary stretched-link">Apply</a>
+      </div>
+     </div>
+    </div>
         </div>
-
-        {% endfor %}
+{% endfor %}
 ```
     
 El funcionamiento es el siguiente:
-- 
+
+{% for recipe in recipes %} indica el comienzo de un bucle, que recorrerá la lista "recipes" que hemos declarado en la llamada TEMPLATES.TemplateResponse y que hemos establecido que su valor era la lista "lista_de_books". Para cada uno de los elemento de dicha lista (recipe in recipes), inssertará en el código HTML todo lo que esté debajo del bucle, hasta el código {% endfor %}. De esta forma, indicamos que se cree una fila (tr) y tantas colunmnas como necesitemos (td) para imprimir en el HTML los datos de las variables, en este ejemplo, con {{ recipe.id }} y {{ recipe.st }}, que son los dos elementos que componen cada uno de los elementos de "recipe".
+
+Un ejemplo más sencillo sería este:
+
+```html
+<table border=1> 
+{% for recipe in recipes %}
+    <tr>
+        <td>
+            Voy a imprimir el primer valor que es el ID almacenado en recipe.id
+        </td>
+        <td>
+            {{ recipe.id }}
+        </td>
+        <td>
+            Aquí meto el valor de recipe.st
+        </td>
+        <td>
+            {{ recipe.st }}
+        </td>
+    </tr>
+ {% endfor %}
+</table>
+```
+
+![image](https://user-images.githubusercontent.com/20743678/225895235-f07503fb-6e29-40ea-8f3e-c85e83753ddb.png)
