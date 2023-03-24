@@ -1,0 +1,46 @@
+Inicio
+|
+V
+Definir la variable UPLOADS_DIR
+|
+V
+Definir la variable app como una instancia de la clase FastAPI
+|
+V
+Definir la variable templates como una instancia de la clase Jinja2Templates
+|
+V
+Montar la carpeta estática con los recursos de la API
+|
+V
+Definir la función home con el método GET que devuelve el archivo index.html
+|
+V
+Definir la función post_basic_form con el método POST que toma un archivo y una dirección de correo electrónico como entrada
+|
+V
+Crear una carpeta temporal
+|
+V
+Crear la carpeta temporal en el directorio UPLOADS_DIR
+|
+V
+Leer el contenido del archivo subido
+|
+V
+Guardar el archivo subido en la carpeta temporal creada anteriormente
+|
+V
+Obtener el tamaño del archivo y convertirlo a KB o MB según corresponda
+|
+V
+Obtener el tipo de archivo y su tipo MIME
+|
+V
+Devolver la plantilla success.html con la información relevante
+|
+V
+Incrementar el contador temporal y devolver su valor
+|
+V
+Fin
