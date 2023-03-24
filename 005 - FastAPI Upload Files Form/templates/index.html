@@ -30,39 +30,103 @@
         </div>
     </div>
 <script>
+
 $(document).ready(function(){
-$('#uploadImage').submit(function(event){
-    if($('#file').val()){
-        event.preventDefault();
-        $('#targetLayer').hide();
-        $('#loading').show();
-        $(this).ajaxSubmit({
-            target: '#targetLayer',
-            beforeSubmit:function(){
-                $('.progress-bar').width('50%');
-            },
-            uploadProgress: function(event, position, total, percentageComplete)
-            {
-                $('.progress-bar').animate({
-                    width: percentageComplete + '%'
-                }, {
-                    duration: 1000
-                });
-            },
-            success:function(data){ //alert(data);
-                $('#loading').hide();
-                $('#div_del_correo').hide();
-                $('#div_del_fichero').hide();
-                $('#div_del_boton').hide();
-                $('#div_de_la_barra').hide();
-                $('#targetLayer').show();
-                $('#targetLayer').append(data.htmlresponse);
-            },
-            resetForm: true
-        });
-    }
-    return false;
+    var progressAnimated = false;
+    var uploadComplete = false;
+
+    // Detecta el envío del formulario de carga de imagen
+    $('#uploadImage').submit(function(event){
+
+        // Comprueba que se ha seleccionado un archivo antes de continuar
+        if($('#file').val()){
+            event.preventDefault();
+
+            // Oculta la capa objetivo donde se mostrará la imagen cargada
+            $('#targetLayer').hide();
+
+            // Muestra el indicador de carga
+            $('#loading').show();
+
+            // Envía el formulario mediante AJAX y procesa la respuesta
+            $(this).ajaxSubmit({
+                target: '#targetLayer',
+
+                // Función que se ejecuta antes de enviar el formulario
+                beforeSubmit:function(){
+                    $('.progress-bar').width('0%'); // Establece el ancho de la barra de progreso a cero
+                },
+
+                // Define la función XMLHttpRequest personalizada para la carga de archivos
+                xhr: function() {
+                    var xhr = new window.XMLHttpRequest();
+                    xhr.upload.addEventListener("progress", function(evt) {
+                        if (evt.lengthComputable) {
+                            // Calcula el porcentaje completado de la carga
+                            var percentComplete = evt.loaded / evt.total;
+                            percentComplete = parseInt(percentComplete * 100);
+
+                            // Actualiza la barra de progreso con el porcentaje completado
+                            $('.progress-bar').width(percentComplete + '%');
+                            $('.progress-bar').html(percentComplete + '%');
+
+                            // Comprueba si el tamaño del archivo cargado es el mismo que el tamaño original del archivo
+                            if (evt.loaded === evt.total) {
+                                uploadComplete = true;
+                            }
+                        }
+                    }, false);
+                    return xhr;
+                },
+
+                // Función que se ejecuta cuando se ha completado la carga de la imagen
+                success:function(data){
+                    if (uploadComplete) {
+                        // Oculta el indicador de carga
+                        $('#loading').hide();
+
+                        // Oculta los elementos del formulario
+                        $('#div_del_correo').hide();
+                        $('#div_del_fichero').hide();
+                        $('#div_del_boton').hide();
+                        $('#div_de_la_barra').hide();
+
+                        // Muestra la imagen cargada en la capa objetivo
+                        $('#targetLayer').show();
+                        $('#targetLayer').append(data.htmlresponse);
+
+                        // Detiene la animación de la barra de progreso
+                        $('.progress-bar').stop();
+                    }
+                },
+
+                // Función que se ejecuta en caso de error en la carga de la imagen
+                error:function(data){
+                    alert('Error subiendo el archivo');
+                },
+
+                // Restablece el formulario después de enviarlo
+                resetForm: true
+            }).progress(function(event, position, total, percentComplete) {
+                // Animación de la barra de progreso
+                if (!progressAnimated) {
+                    progressAnimated = true;
+                    $('.progress-bar').animate({
+                        width: percentComplete + '%'
+                    }, {
+                        duration: 15000, // Aumenta la duración de la animación a 15 segundos
+                        step: function(now, fx){
+                            var percentage = Math.round(now);
+                            $('.progress-bar').html(percentage + '%');
+                        }
+                    });
+                }
+            });
+        }
+        return false;
+    });
 });
-});
+
+
 </script>
 {% endblock content %}
