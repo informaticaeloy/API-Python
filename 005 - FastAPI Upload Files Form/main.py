@@ -49,9 +49,9 @@ async def post_basic_form(request: Request, file: UploadFile = File(...), mail_a
     # se almacena en el fichero '.counter'. Con cada carpeta creada este contador se incrementa en 1 unidad para el
     # siguiente trabajo
     carpeta_temporal = contador_temporal()
-    
+
     # Se agrega un relleno con ceros a la izquierda para completar 6 dígitos
-    carpeta_temporal = carpeta_temporal.zfill(6) + '/'  
+    carpeta_temporal = carpeta_temporal.zfill(6) + '/'
 
     os.mkdir('uploads/' + carpeta_temporal)  # creamos la carpeta temporal en el directorio 'uploads'
 
@@ -101,4 +101,3 @@ def contador_temporal() -> str:
 
     # Retornamos el valor del contador
     return contador
-
