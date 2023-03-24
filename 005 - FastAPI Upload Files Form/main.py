@@ -39,21 +39,29 @@ def home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 
+# Definimos una acción POST, ASYNC -> tenemos que esperar a esta función, mediante la función post_basic_form, que será
+# llamada al acceder a 127.0.0.1:8000/upload, que es la acción del botón del formulario de index.html
+# Esta función necesita 3 parámetros: el propio request del formulario, el fichero subido desde el formulario y el
+# mail que el usuario a ingresado en el formulario
 @app.post('/uploadfile', response_class=HTMLResponse)
 async def post_basic_form(request: Request, file: UploadFile = File(...), mail_address: str = Form(...)):
+    # Creamos una carpeta temporal incremental con una longitud numérica de 5 dígitos. El valor de este contador
+    # se almacena en el fichero '.counter'. Con cada carpeta creada este contador se incrementa en 1 unidad para el
+    # siguiente trabajo
     carpeta_temporal = contador_temporal()
-    carpeta_temporal = carpeta_temporal.zfill(5) + '/'
+    
+    # Se agrega un relleno con ceros a la izquierda para completar 6 dígitos
+    carpeta_temporal = carpeta_temporal.zfill(6) + '/'  
 
-    os.mkdir('uploads/' + carpeta_temporal)
+    os.mkdir('uploads/' + carpeta_temporal)  # creamos la carpeta temporal en el directorio 'uploads'
 
-    print(f'Filename: {file.filename}')
+    contents = await file.read()  # Leemos el contenido del archivo
 
-    contents = await file.read()
-
-    # save the file
+    # guardamos el archivo en el disco
     with open(f"{UPLOADS_DIR}{str(carpeta_temporal)}{file.filename}", "wb") as f:
         f.write(contents)
 
+    # Obtenemos el tamaño del archivo y lo convertimos a una unidad de medida legible (KB o MB)
     size = os.stat(f"{UPLOADS_DIR}{str(carpeta_temporal)}{file.filename}").st_size
     if size < 1024:
         size_en_megas = "0.1 KB"
@@ -64,26 +72,33 @@ async def post_basic_form(request: Request, file: UploadFile = File(...), mail_a
     else:
         size_en_megas = str(round(size / (1024 * 1024), 2)) + ' MB'
 
+    # Obtenemos el tipo de archivo a partir del contenido y del 'mime type'
     file_type = magic.from_file(f"{UPLOADS_DIR}{str(carpeta_temporal)}{file.filename}")
     file_type_mime = magic.from_file(f"{UPLOADS_DIR}{str(carpeta_temporal)}{file.filename}", mime=True)
+
+    # Retornamos la respuesta exitosa con los datos del archivo subido
     return templates.TemplateResponse('success.html', context={'request': request,
                                                                'file_name_uploaded': file.filename,
                                                                'file_size_uploaded': size,
                                                                'file_size_uploaded_en_megas': size_en_megas,
                                                                'email_usuario': mail_address,
                                                                'file_type': file_type,
-                                                               'file_type_mime': file_type_mime})
+                                                               'file_type_mime': file_type_mime,
+                                                               'numero_de_caso': carpeta_temporal[:-1]})
 
 
 def contador_temporal() -> str:
+    # Leemos el contador desde el archivo '.counter'
     with open('.counter', 'r') as f:
         contador = f.read()
         f.close()
 
+    # Incrementamos el contador en 1 y lo guardamos en el archivo '.counter'
     contador = str(int(contador) + 1)
-
     with open(f"{'.counter'}", "w") as f:
         f.write(contador)
         f.close()
 
+    # Retornamos el valor del contador
     return contador
+
