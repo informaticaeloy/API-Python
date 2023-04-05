@@ -17,7 +17,8 @@ Repositorio con code, aclaraciones y ejemplos de los proyectos Python que voy de
 * [002 - Trabajando con PyMongoDB](https://github.com/informaticaeloy/API-Python/tree/main/002%20-%20PyMongo)
 * [003 - FastAPI - Visualización con platillas HTML.](https://github.com/informaticaeloy/API-Python/tree/main/003%20-%20FastAPI%20-%20Visualizaci%C3%B3n%20con%20platillas%20HTML)
 * [004 - PyMongo + FastAPI](https://github.com/informaticaeloy/API-Python/tree/main/004%20-%20PyMongo%20+%20FastAPI) 
-* [005 - Formulario Upload Files](https://github.com/informaticaeloy/API-Python#:~:text=005%20%2D%20FastAPI%20Upload%20Files%20Form)***En desarrollo***
+* [005 - Formulario Upload Files](https://github.com/informaticaeloy/API-Python#:~:text=005%20%2D%20FastAPI%20Upload%20Files%20Form)
+* 006 - ***En desarrollo***
 
 ### Referencias
 
